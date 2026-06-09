@@ -5,9 +5,10 @@
 **Theme:** From fine-tuning to real deployment
 **Recommended base model:** `Qwen/Qwen3-0.6B`
 
-This project is a continuation of Lab 7 on fine-tuning. The goal is not only to
-fine-tune a model, but to build a clean, reproducible, industry-style LLM
-deployment workflow.
+This project is a continuation of the Session 7 fine-tuning lab. You will work
+in the same groups as for the case studies, as if you were working on a small
+industry-style AI project. The goal is not only to fine-tune a model, but to
+build a clean, reproducible, industry-style LLM deployment workflow.
 
 You must prepare data, train a LoRA adapter, evaluate the model, push the model
 to Hugging Face Hub, and deploy a working Hugging Face Space.
@@ -21,7 +22,8 @@ Each group must submit:
 3. A Hugging Face Space using Gradio or Streamlit.
 4. A completed model card.
 5. A short project report.
-6. A short demo during the final presentation.
+6. An individual technical note for each group member.
+7. A short demo during the final presentation.
 
 ## Project Objective
 
@@ -36,8 +38,11 @@ Examples:
 - local language chatbot;
 - domain-specific assistant for AIMS coursework.
 
-You may use the provided Wolof starter data, but your project must show a clean
-methodology that could be reused for another domain or language.
+The provided Wolof data is a starter example. Your group may keep Wolof, choose
+another African language, work in English or French, or build another
+domain-specific assistant. However, the methodology is mandatory: separated
+data sources, chat formatting, assistant-only training, evaluation, deployment,
+and documentation.
 
 ## Mandatory Methodology
 
@@ -45,12 +50,26 @@ methodology that could be reused for another domain or language.
 
 Do not directly train on one mixed dataset without documenting the source.
 
-You must keep each data family separate, for example:
+You must use at least three separated data sources:
+
+1. a general or base dataset;
+2. a synthetic instruction dataset;
+3. a domain-specific dataset linked to your use case.
+
+For a Wolof project, this could look like:
 
 ```text
 data/wolof_aya.jsonl
 data/wolof_soynade.jsonl
 data/wolof_synth.jsonl
+```
+
+For another language or domain, use explicit names such as:
+
+```text
+data/source_1_general.jsonl
+data/source_2_synthetic.jsonl
+data/source_3_domain.jsonl
 ```
 
 Each row should use this schema:
@@ -75,13 +94,16 @@ user
 assistant
 ```
 
-The starter pipeline creates:
+For the Wolof starter example, the pipeline creates:
 
 ```text
 data/chat_aya.json
 data/chat_soynade.json
 data/chat_synth.json
 ```
+
+If you choose another language or domain, rename the chat files clearly and
+update the YAML config accordingly.
 
 ### 3. Splits Must Be Reproducible
 
@@ -169,6 +191,34 @@ Possible improvements:
 
 If you do not use it in the final Space, you must explain why and propose a
 better alternative.
+
+## Individual Differentiation Note
+
+Each student must add a short individual note to the project report.
+
+Recommended length: **half a page per student**. Maximum length: **one page per
+student**.
+
+The goal is to distinguish individual understanding inside a group project. Keep
+answers precise and technical. Do not write long paragraphs.
+
+Each student must answer:
+
+1. What exact part of the project did you implement or improve? Mention files,
+   functions, notebooks, commits or experiments when possible.
+2. Which technical choice did you make, and what alternative did you reject?
+   Example: model size, LoRA rank, data source, evaluation metric,
+   quantization, Space interface, guardrail.
+3. What problem or failure did you observe, and how did you diagnose it?
+   Example: overfitting, bad generation, memory issue, checkpoint failure,
+   unsafe output, deployment error.
+4. How did you verify that your contribution works? Give one metric, one test,
+   one screenshot, one command output, or one qualitative example.
+5. If you had one extra day, what would you improve first and why?
+
+During the final presentation, the instructor may ask one individual question
+based on this note. The group grade can be adjusted individually when a student
+cannot explain the part they claim to have contributed.
 
 ## Setup
 
@@ -403,13 +453,14 @@ Do not commit:
 | Criterion                                                            | Weight |
 | -------------------------------------------------------------------- | ------ |
 | Clear use case and problem definition                                | 10%    |
-| Data methodology: separated sources, cleaning, documentation         | 20%    |
-| Correct chat formatting and assistant-only `-100` masking          | 15%    |
+| Data methodology: separated sources, cleaning, documentation         | 15%    |
+| Correct chat formatting and assistant-only `-100` masking          | 10%    |
 | Training quality and reproducibility                                 | 15%    |
 | Evaluation quality and interpretation                                | 15%    |
 | Hugging Face Hub deployment and model card                           | 10%    |
 | Hugging Face Space deployment                                        | 10%    |
 | Improvement of `context_state_machine.py` or justified alternative | 5%     |
+| Individual technical note and oral defense                           | 10%    |
 
 ## Submission Checklist
 
@@ -422,3 +473,4 @@ Before submission, verify:
 - Your Hugging Face Space runs and uses the Hub model.
 - Your model card is complete.
 - Your report explains data, training, evaluation, deployment, and limitations.
+- Each student has written an individual technical note.
