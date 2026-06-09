@@ -3,7 +3,7 @@
 **Course:** Cases studies Applied Generative and Agentic AI
 **Assessment type:** Project-based exam
 **Theme:** From fine-tuning to real deployment
-**Recommended base model:** `Qwen/Qwen3-0.6B`
+**Recommended base model:** `Qwen/Qwen3-0.6B or litert-community/gemma-4-E2B-it-litert-lm.`
 
 This project is a continuation of the Session 7 fine-tuning lab. You will work
 in the same groups as for the case studies, as if you were working on a small
